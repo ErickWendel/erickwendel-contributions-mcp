@@ -81,6 +81,14 @@ npx -y @smithery/cli@latest inspect @ErickWendel/erickwendel-contributions-mcp
 
 This will show you all available tools, their parameters, and how to use them.
 
+### Installing via Smithery
+
+To install Erick Wendel Contributions for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp):
+
+```bash
+npx -y @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client claude
+```
+
 ### Cursor IDE Setup
 
 1. Open Cursor Settings
