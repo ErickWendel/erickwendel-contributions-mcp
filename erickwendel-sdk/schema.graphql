@@ -1,0 +1,113 @@
+type Query {
+  getTalks(_id: ID, title: String, language: String, city: String, country: String, skip: Int = 0, limit: Int = 10): TalkQuery
+  isAlive: Boolean
+  getPosts(_id: ID, title: String, language: String, portal: String, skip: Int = 0, limit: Int = 10): PostQuery
+  getVideos(_id: ID, title: String, language: String, skip: Int = 0, limit: Int = 10): VideoQuery
+  getProjects(_id: ID, title: String, language: String, skip: Int = 0, limit: Int = 10): ProjectQuery
+}
+
+type TalkQuery {
+  totalCount: Int!
+  retrieved: Int!
+  processedIn: Int!
+  talks: [Talk]
+}
+
+type Talk {
+  _id: ID
+  title: String
+  abstract: String
+  type: String
+  event: Event
+  slides: String
+  images: [Image]
+  video: String
+  tags: [String]
+  location: Location
+  additionalLinks: [String]
+  language: String
+  date: String
+}
+
+type Event {
+  link: String
+  name: String
+}
+
+type Image {
+  url: String
+  filename: String
+  size: String
+  pathId: String
+}
+
+type Location {
+  latitude: Float
+  longitude: Float
+  country: String
+  uf: String
+  city: String
+}
+
+type PostQuery {
+  totalCount: Int!
+  retrieved: Int!
+  processedIn: Int!
+  posts: [Post]
+}
+
+type Post {
+  _id: ID
+  title: String
+  abstract: String
+  type: String
+  link: String
+  additionalLinks: [String]
+  portal: Portal
+  tags: [String]
+  language: String
+  date: String
+}
+
+type Portal {
+  link: String
+  name: String
+}
+
+type VideoQuery {
+  totalCount: Int!
+  retrieved: Int!
+  processedIn: Int!
+  videos: [Video]
+}
+
+type Video {
+  _id: ID
+  title: String
+  abstract: String
+  type: String
+  link: String
+  additionalLinks: [String]
+  tags: [String]
+  language: String
+  date: String
+}
+
+type ProjectQuery {
+  totalCount: Int!
+  retrieved: Int!
+  processedIn: Int!
+  projects: [Project]
+}
+
+type Project {
+  _id: ID
+  title: String
+  abstract: String
+  type: String
+  link: String
+  additionalLinks: [String]
+  tags: [String]
+  language: String
+  date: String
+}

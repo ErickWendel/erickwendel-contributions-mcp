@@ -1,0 +1,23 @@
+{
+  "name": "tml-graphql-service",
+  "version": "1.0.0",
+  "description": "A service that provides access to TML GraphQL API data",
+  "main": "src/index.ts",
+  "type": "module",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "start": "node src/index.ts",
+    "dev": "node --inspect --watch src/index.ts",
+    "test": "node --no-warnings --test test/**/*.test.ts",
+    "test:dev": "node --no-warnings --test --watch test/**/*.test.ts"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.5.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24"
+  }
+} 

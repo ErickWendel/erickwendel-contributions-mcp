@@ -1,0 +1,52 @@
+https://genql.dev/docs
+const GRAPHQL_API = 'https://tml-api.herokuapp.com/graphql';
+https://smithery.ai//?q=webui
+https://github.com/NightTrek/Ollama-mcp/blob/main/src/index.ts
+https://smithery.ai/server/@smithery-ai/brave-search
+https://github.com/punkpeye/awesome-mcp-clients
+https://github.com/open-webui/open-webui/discussions/7431
+https://github.com/dotansimha/graphql-code-generator
+https://www.aihero.dev/mcp-server-from-a-single-typescript-file?list=model-context-protocol-tutorial
+https://modelcontextprotocol.io/introduction
+https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview
+
+https://github.com/patruff/ollama-mcp-bridge
+https://erickwendel.com.br/
+https://tml-api.herokuapp.com/graphiql
+https://neo4j.com/blog/developer/claude-converses-neo4j-via-mcp/
+https://github.com/open-webui/open-webui/discussions/7363
+https://github.com/resend/mcp-send-email/tree/main
+
+
+
+{
+    "mcpServers": {
+      "erick-wendel-api": {
+        "command": "/Users/erickwendel/.nvm/versions/node/v23.9.0/bin/node",
+        "args": ["/Users/erickwendel/Downloads/projetos/mcp-aai-example/src/index.ts"]
+      }
+    }
+  }
+
+
+
+go env GOROOT GOPATH
+export GOROOT=$(brew --prefix go)/libexec
+export PATH=$GOROOT/bin:$PATH
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
+
+echo 'export GOROOT=$(brew --prefix go)/libexec' >> ~/.zshrc
+echo 'export PATH=$GOROOT/bin:$PATH' >> ~/.zshrc
+echo 'export GOPATH=$HOME/go' >> ~/.zshrc
+echo 'export PATH=$GOPATH/bin:$PATH' >> ~/.zshrc
+source ~/.zshrc  # Apply changes
+
+go version
+go env GOROOT GOPATH
+
+go install github.com/mark3labs/mcphost@latest
+mcphost --config ./mcp.json -m ollama:qwen2.5-coder:7b-instruct
+mcphost --config ./mcp.json -m ollama:deepseek-coder:6.7b
+mcphost --config ./mcp.json -m ollama:qwen2.5:3b
