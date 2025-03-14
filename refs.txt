@@ -17,7 +17,8 @@ https://neo4j.com/blog/developer/claude-converses-neo4j-via-mcp/
 https://github.com/open-webui/open-webui/discussions/7363
 https://github.com/resend/mcp-send-email/tree/main
 
-
+https://github.com/modelcontextprotocol/inspector
+npx @modelcontextprotocol/inspector npm start
 
 {
     "mcpServers": {
