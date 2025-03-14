@@ -71,8 +71,13 @@ This MCP server provides the following tools to interact with the API:
 You can inspect this MCP server's capabilities using Smithery:
 
 ```bash
+npx -y @smithery/cli@latest query @ErickWendel/erickwendel-contributions-mcp "check-status"
+```
+
+```bash
 npx -y @smithery/cli@latest inspect @ErickWendel/erickwendel-contributions-mcp
 ```
+
 
 This will show you all available tools, their parameters, and how to use them.
 

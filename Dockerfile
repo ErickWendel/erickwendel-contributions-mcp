@@ -30,4 +30,4 @@ COPY --from=builder /app/src ./src
 USER node
 
 # Start the application
-CMD ["npm", "start"] 
+CMD npm start
