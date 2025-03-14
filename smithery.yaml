@@ -1,76 +1,19 @@
-name: erickwendel-contributions-mcp
-description: A Model Context Protocol (MCP) server that provides tools to query Erick Wendel's contributions across different platforms.
-version: 1.0.0
-author: Erick Wendel
-repository: https://github.com/ErickWendel/erickwendel-contributions-mcp
-license: MIT
+# Smithery configuration file: https://smithery.ai/docs/config#smitheryyaml
 
-# Smithery.ai configuration
 startCommand:
   type: stdio
+  configSchema:
+    # JSON Schema defining the configuration options for the MCP.
+    {}
   commandFunction:
-    # A function that produces the CLI command to start the MCP on stdio.
+    # A JS function that produces the CLI command based on the given config to start the MCP on stdio.
     |-
     (config) => ({
-      "command": "node",
+      "command": "npm",
       "args": [
-        "--no-warnings",
-        "src/index.ts"
-      ]
+        "start"
+      ],
+      "env": {
+        ...config
+      }
     })
-  
-tools:
-  - name: get-talks
-    description: Retrieves a paginated list of talks with optional filtering
-    parameters:
-      - name: language
-        type: string
-        description: Filter talks by language (e.g., 'spanish', 'english', 'portuguese')
-        optional: true
-      - name: country
-        type: string
-        description: Filter talks by country
-        optional: true
-      - name: city
-        type: string
-        description: Filter talks by city
-        optional: true
-      - name: year
-        type: number
-        description: Filter talks by year
-        optional: true
-      - name: title
-        type: string
-        description: Filter talks by title
-        optional: true
-
-  - name: get-posts
-    description: Fetches posts with optional filtering and pagination
-    parameters:
-      - name: language
-        type: string
-        description: Filter posts by language
-        optional: true
-      - name: title
-        type: string
-        description: Filter posts by title
-        optional: true
-      - name: portal
-        type: string
-        description: Filter posts by portal
-        optional: true
-
-  - name: get-videos
-    description: Retrieves videos with optional filtering and pagination
-    parameters:
-      - name: language
-        type: string
-        description: Filter videos by language
-        optional: true
-      - name: title
-        type: string
-        description: Filter videos by title
-        optional: true
-
-  - name: check-status
-    description: Verifies if the API is alive and responding 
