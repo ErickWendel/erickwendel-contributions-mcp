@@ -1,6 +1,10 @@
 # erickwendel-contributions-mcp
 
+![CI Status](https://github.com/ErickWendel/erickwendel-contributions-mcp/workflows/Test%20MCP%20Server/badge.svg)
+
 A Model Context Protocol (MCP) server that provides tools to query [Erick Wendel's contributions](https://erickwendel.com.br/) across different platforms. Query talks, blog posts, and videos using natural language through Claude, Cursor or similars. This project was built using [Cursor](https://cursor.sh) IDE with the default agent (free version).
+
+
 
 ## Features
 
