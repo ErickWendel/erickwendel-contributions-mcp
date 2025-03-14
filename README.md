@@ -5,15 +5,9 @@
 
 A Model Context Protocol (MCP) server that provides tools to query [Erick Wendel's contributions](https://erickwendel.com.br/) across different platforms. Query talks, blog posts, and videos using natural language through Claude, Cursor or similars. This project was built using [Cursor](https://cursor.sh) IDE with the default agent (free version).
 
-## Inspect MCP Server Capabilities
+This MCP server is also available on [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp) for direct integration.
 
-You can inspect this MCP server's capabilities using Smithery:
 
-```bash
-npx -y @smithery/cli@latest inspect @ErickWendel/erickwendel-contributions-mcp
-```
-
-This will show you all available tools, their parameters, and how to use them.
 
 ## Features
 
@@ -71,6 +65,16 @@ This MCP server provides the following tools to interact with the API:
 - `check-status`: Verifies if the API is alive and responding
 
 ## Integration with AI Tools
+
+## Inspect MCP Server Capabilities
+
+You can inspect this MCP server's capabilities using Smithery:
+
+```bash
+npx -y @smithery/cli@latest inspect @ErickWendel/erickwendel-contributions-mcp
+```
+
+This will show you all available tools, their parameters, and how to use them.
 
 ### Cursor IDE Setup
 
