@@ -19,7 +19,7 @@ https://github.com/resend/mcp-send-email/tree/main
 
 https://github.com/modelcontextprotocol/inspector
 npx @modelcontextprotocol/inspector npm start
-
+https://smithery.ai/docs/config
 {
     "mcpServers": {
       "erick-wendel-api": {

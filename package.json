@@ -8,7 +8,7 @@
     "node": ">=20.0.0"
   },
   "scripts": {
-    "start": "node src/index.ts",
+    "start": "node --no-warnings src/index.ts",
     "dev": "node --inspect --watch src/index.ts",
     "test": "node --no-warnings --test test/**/*.test.ts",
     "test:dev": "node --no-warnings --test --watch test/**/*.test.ts"
