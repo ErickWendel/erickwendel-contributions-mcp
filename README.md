@@ -123,9 +123,21 @@ mcphost --config ./mcp.jsonc -m ollama:MODEL_NAME
 Here are some examples of queries you can ask Claude, Cursor or any MCP Client:
 
 1. "How many talks were given in 2023?"
+
+![](./demos/talks-in-2023.jpeg)
+
 2. "Show me talks in Spanish"
+
+![](./demos/talks-in-spanish.jpeg)
+
 3. "Find posts about WebXR"
+
+![](./demos/posts-webxr.jpeg)
+
 4. "Are there videos about RAG?"
+
+![](./demos/videos-about-rag.jpeg)
+
 
 ## Development
 
