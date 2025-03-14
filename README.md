@@ -17,32 +17,6 @@ A Model Context Protocol (MCP) server that provides tools to query [Erick Wendel
 - Structured error handling
 - Compatible with Claude Desktop, Cursor, and [MCPHost](https://github.com/mark3labs/mcphost) (free alternative)
 
-## Free Alternative Using MCPHost
-
-If you don't have access to Claude, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative. MCPHost is a CLI tool that enables Large Language Models to interact with MCP servers.
-
-1. Install MCPHost:
-```bash
-go install github.com/mark3labs/mcphost@latest
-```
-
-2. Create a config file (e.g., [./mcp.jsonc](./mcp.jsonc)`):
-```json
-{
-  "mcpServers": {
-    "erickwendel-contributions": {
-      "command": "node",
-      "args": ["ABSOLUTE_PATH_TO_PROJECT/src/index.ts"]
-    }
-  }
-}
-```
-
-3. Run MCPHost with your preferred Ollama model:
-```bash
-ollama pull MODEL_NAME
-mcphost --config ./mcp.jsonc -m ollama:MODEL_NAME
-```
 
 ## Architecture
 
@@ -115,6 +89,33 @@ Add the following configuration to your Claude Desktop config:
     }
   }
 }
+```
+
+### Free Alternative Using MCPHost
+
+If you don't have access to Claude, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative. MCPHost is a CLI tool that enables Large Language Models to interact with MCP servers.
+
+1. Install MCPHost:
+```bash
+go install github.com/mark3labs/mcphost@latest
+```
+
+2. Create a config file (e.g., [./mcp.jsonc](./mcp.jsonc)`):
+```json
+{
+  "mcpServers": {
+    "erickwendel-contributions": {
+      "command": "node",
+      "args": ["ABSOLUTE_PATH_TO_PROJECT/src/index.ts"]
+    }
+  }
+}
+```
+
+3. Run MCPHost with your preferred Ollama model:
+```bash
+ollama pull MODEL_NAME
+mcphost --config ./mcp.jsonc -m ollama:MODEL_NAME
 ```
 
 ## Example Queries
