@@ -59,8 +59,8 @@ async function main() {
   // Connect to stdio transport
   const transport = new StdioServerTransport();
   await server.connect(transport);
-  
-  console.log("Erick Wendel API MCP Server running on stdio");
+  // console.error for claude-desktop so it won't process this output
+  console.error("Erick Wendel API MCP Server running on stdio");
 }
 
 // Start the server

@@ -15,13 +15,11 @@ startCommand:
     # A function that produces the CLI command to start the MCP on stdio.
     |-
     (config) => ({
-      "command": "npm",
+      "command": "node",
       "args": [
-        "start"
-      ],
-      "env": {
-        ...config
-      }
+        "--no-warnings",
+        "src/index.ts"
+      ]
     })
   
 tools:
