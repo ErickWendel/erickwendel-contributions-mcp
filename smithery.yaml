@@ -1,5 +1,23 @@
 name: erickwendel-contributions-mcp
-description: A Model Context Protocol (MCP) server that provides tools to query Erick Wendel's contributions across different platforms.
+description: |
+  A Model Context Protocol (MCP) server that provides tools to query Erick Wendel's contributions across different platforms. Built with TypeScript and Zod schema validation, this server offers native TypeScript support in Node.js without transpilation.
+
+  Features:
+  - Query talks, blog posts, and videos using natural language
+  - Filter content by language, country, city, year, and more
+  - Get paginated results with flexible filtering options
+  - Built using GenQL for type-safe GraphQL operations
+  - Compatible with Claude Desktop, Cursor, and MCPHost
+
+  The server is generated from the GraphQL API at https://tml-api.herokuapp.com/graphiql and provides a seamless way to access Erick Wendel's content through various AI tools.
+
+  Example Queries:
+  - "How many talks were given in 2023?"
+  - "Show me talks in Spanish"
+  - "Find posts about WebXR"
+  - "Are there videos about RAG?"
+
+  For full documentation, installation instructions, and more examples, visit the [GitHub README](https://github.com/ErickWendel/erickwendel-contributions-mcp).
 version: 1.0.0
 author: Erick Wendel
 repository: https://github.com/ErickWendel/erickwendel-contributions-mcp
