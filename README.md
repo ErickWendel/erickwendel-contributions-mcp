@@ -171,7 +171,7 @@ or if you prefer executing it from Smithery
 
 ### Free Alternative Using MCPHost
 
-If you don't have access to Claude Desktop, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative. MCPHost is a CLI tool that enables Large Language Models to interact with MCP servers.
+If you don't have access to Claude Desktop nor Cursor, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative. MCPHost is a CLI tool that enables Large Language Models to interact with MCP servers.
 
 1. Install MCPHost:
 ```bash
