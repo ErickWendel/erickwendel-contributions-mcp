@@ -20,6 +20,7 @@ https://docs.cursor.com/settings/models
 https://github.com/modelcontextprotocol/inspector
 npx @modelcontextprotocol/inspector npm start
 https://smithery.ai/docs/config
+https://github.com/modelcontextprotocol/servers
 {
     "mcpServers": {
       "erick-wendel-api": {
@@ -51,3 +52,6 @@ go install github.com/mark3labs/mcphost@latest
 mcphost --config ./mcp.json -m ollama:qwen2.5-coder:7b-instruct
 mcphost --config ./mcp.json -m ollama:deepseek-coder:6.7b
 mcphost --config ./mcp.json -m ollama:qwen2.5:3b
+
+
+npm exec -- @smithery/cli@latest run @ErickWendel/erickwendel-contributions-mcp

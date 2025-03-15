@@ -67,6 +67,15 @@ npm ci
    Type = command
    Command = node ABSOLUTE_PATH_TO_PROJECT/src/index.ts
    ```
+
+   or if you prefer executing it from Smithery
+   ```
+   Name = erickwendel-contributions
+   Type = command
+   Command = npm exec -- @smithery/cli@latest run @ErickWendel/erickwendel-contributions-mcp
+   ```
+![](./demos/cursor-mcp.png)
+   
 5. Make sure Cursor chat is in Agent mode by selecting "Agent" in the lower left side dropdown
 
 6. Go to the chat an ask "how many videos were published about JavaScript in 2024"
