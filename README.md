@@ -7,46 +7,6 @@ A Model Context Protocol (MCP) server that provides tools to query [Erick Wendel
 
 This MCP server is also available on [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp) for direct integration.
 
-## Features
-
-- Built with Model Context Protocol (MCP)
-- Type-safe with TypeScript and Zod schema validation
-- Native TypeScript support in Node.js without transpilation
-- Generated SDK using [GenQL](https://genql.dev)
-- Modular architecture with separation of concerns
-- Standard I/O transport for easy integration
-- Structured error handling
-- Compatible with Claude Desktop, Cursor, and [MCPHost](https://github.com/mark3labs/mcphost) (free alternative)
-
-> Note: This project requires Node.js v23+ as it uses the native TypeScript support added in the last year.
-
-## Architecture
-
-The codebase follows a modular structure:
-
-```
-src/
-  ├── config/      # Configuration settings
-  ├── types/       # TypeScript interfaces and types
-  ├── tools/       # MCP tool implementations
-  ├── utils/       # Utility functions
-  ├── services/    # API service layer
-  └── index.ts     # Main entry point
-```
-
-## Setup
-
-1. Clone this repository:
-```bash
-git clone https://github.com/erickwendel/erickwendel-contributions-mcp.git
-cd erickwendel-contributions-mcp
-```
-
-2. Restore dependencies:
-```bash
-npm ci
-```
-
 ## Available Tools
 
 This MCP server provides the following tools to interact with the API:
@@ -63,7 +23,7 @@ This MCP server provides the following tools to interact with the API:
 
 - `check-status`: Verifies if the API is alive and responding
 
-## Integration with AI Tools
+# Integration with AI Tools
 
 ## Inspect MCP Server Capabilities
 
@@ -75,19 +35,26 @@ npx -y @smithery/cli@latest inspect @ErickWendel/erickwendel-contributions-mcp
 
 This will show you all available tools, their parameters, and how to use them.
 
-## Integration with AI Tools
+## Setup
 
-Make sure you're using Node.js on version 23 or superior (it requires the native TypeScript support on Node.js).
-
-### Installing via Smithery
-
-To install Erick Wendel Contributions for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp):
-
+1. Make sure you're using Node.js v23+
 ```bash
-npx -y @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client claude
+node -v
+#v23.9.0
 ```
 
-> **Note**: The Smithery CLI installation for Claude is currently experiencing issues. Please use the manual installation method below until this is resolved.
+2. Clone this repository:
+```bash
+git clone https://github.com/erickwendel/erickwendel-contributions-mcp.git
+cd erickwendel-contributions-mcp
+```
+
+3. Restore dependencies:
+```bash
+npm ci
+```
+
+## Integration with AI Tools
 
 ### Cursor Setup
 
@@ -107,8 +74,22 @@ npx -y @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client
 ![](./demos/cursor-videos-in-2024.png)
 
 
+
 ### Claude Desktop Setup
-1. Go to Claude settings ( command ,)
+
+#### Installing via Smithery
+
+To install Erick Wendel Contributions for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp):
+
+```bash
+npx -y @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client claude
+```
+
+> **Note**: The Smithery CLI installation for Claude is currently experiencing issues. Please use the manual installation method below until this is resolved.
+
+#### Manual Setup
+
+1. Go to Claude settings
 2. Click in the Developer tab
 3. Click in edit config
 4. Open the config in a code editor
@@ -129,20 +110,20 @@ npx -y @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client
 
 ![](./demos/claude-conf.png)
 
-8. Go to the chat an ask "Are there videos about RAG?"
+8. Go to the chat and ask "Are there videos about RAG?"
 
 ![](./demos/videos-about-rag.jpeg)
 
 ### Free Alternative Using MCPHost
 
-If you don't have access to Claude, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative. MCPHost is a CLI tool that enables Large Language Models to interact with MCP servers.
+If you don't have access to Claude Desktop, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative. MCPHost is a CLI tool that enables Large Language Models to interact with MCP servers.
 
 1. Install MCPHost:
 ```bash
 go install github.com/mark3labs/mcphost@latest
 ```
 
-2. Create a config file (e.g., [./mcp.jsonc](./mcp.jsonc)`):
+2. Create a config file (e.g. [./mcp.jsonc](./mcp.jsonc)):
 ```json
 {
   "mcpServers": {
@@ -177,13 +158,33 @@ Here are some examples of queries you can ask Claude, Cursor or any MCP Client:
 ![](./demos/posts-webxr.jpeg)
 
 
+# Development
+## Features
 
-## Development
+- Built with Model Context Protocol (MCP)
+- Type-safe with TypeScript and Zod schema validation
+- Native TypeScript support in Node.js without transpilation
+- Generated SDK using [GenQL](https://genql.dev)
+- Modular architecture with separation of concerns
+- Standard I/O transport for easy integration
+- Structured error handling
+- Compatible with Claude Desktop, Cursor, and [MCPHost](https://github.com/mark3labs/mcphost) (free alternative)
 
-The project uses TypeScript natively in Node.js. The SDK was generated using:
-1. The GraphQL API at [https://tml-api.herokuapp.com/graphiql](https://tml-api.herokuapp.com/graphiql)
-2. [GenQL](https://genql.dev/docs) to generate the TypeScript SDK
-3. File extensions were changed to `.ts` to enable native TypeScript support
+> Note: This project requires Node.js v23+ as it uses the native TypeScript support added in the last year.
+
+## Architecture
+
+The codebase follows a modular structure:
+
+```
+src/
+  ├── config/      # Configuration settings
+  ├── types/       # TypeScript interfaces and types
+  ├── tools/       # MCP tool implementations
+  ├── utils/       # Utility functions
+  ├── services/    # API service layer
+  └── index.ts     # Main entry point
+```
 
 ## Testing
 
@@ -205,8 +206,8 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## Author
 
-[Erick Wendel](https://github.com/erickwendel)
+[Erick Wendel](https://linktr.ee/erickwendel)
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details. 
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details. 
