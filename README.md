@@ -75,14 +75,42 @@ npm ci
    Command = npm exec -- @smithery/cli@latest run @ErickWendel/erickwendel-contributions-mcp
    ```
 ![](./demos/cursor-mcp.png)
-   
+
+or configure directly from the Cursor's global MCP file located in `~/.cursor/mcp.json` and add the following:
+
+```json
+{
+  "mcpServers": {
+    "erickwendel-contributions": {
+      "command": "node",
+      "args": ["ABSOLUTE_PATH_TO_PROJECT/src/index.ts"]
+    }
+  }
+}
+```
+or if you prefer executing it from Smithery
+```json
+{
+  "mcpServers": {
+    "erickwendel-contributions": {
+      "command": "npm",
+      "args": [
+        "exec",
+        "--",
+        "@smithery/cli@latest",
+        "run",
+        "@ErickWendel/erickwendel-contributions-mcp"
+      ]
+    }
+  }
+}
+```
+
 5. Make sure Cursor chat is in Agent mode by selecting "Agent" in the lower left side dropdown
 
 6. Go to the chat an ask "how many videos were published about JavaScript in 2024"
 
 ![](./demos/cursor-videos-in-2024.png)
-
-
 
 ### Claude Desktop Setup
 
