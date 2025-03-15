@@ -1,4 +1,5 @@
 https://genql.dev/docs
+https://github.com/modelcontextprotocol/typescript-sdk
 const GRAPHQL_API = 'https://tml-api.herokuapp.com/graphql';
 https://smithery.ai//?q=webui
 https://github.com/NightTrek/Ollama-mcp/blob/main/src/index.ts
