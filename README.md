@@ -114,6 +114,24 @@ npx -y @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client
   }
 }
 ```
+or if you prefer executing it from Smithery
+```json
+{
+  "mcpServers": {
+    "erickwendel-contributions": {
+      "command": "npm",
+      "args": [
+        "exec",
+        "--",
+        "@smithery/cli@latest",
+        "run",
+        "@ErickWendel/erickwendel-contributions-mcp"
+      ]
+    }
+  }
+}
+```
+
 6. Save file and Restart Claude Desktop
 7. Open the Developer tab again and check if it's in the "running" state as follows:
 
@@ -143,7 +161,23 @@ go install github.com/mark3labs/mcphost@latest
   }
 }
 ```
-
+or if you prefer executing it from Smithery
+```json
+{
+  "mcpServers": {
+    "erickwendel-contributions": {
+      "command": "npm",
+      "args": [
+        "exec",
+        "--",
+        "@smithery/cli@latest",
+        "run",
+        "@ErickWendel/erickwendel-contributions-mcp"
+      ]
+    }
+  }
+}
+```
 3. Run MCPHost with your preferred Ollama model:
 ```bash
 ollama pull MODEL_NAME
