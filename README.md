@@ -7,8 +7,6 @@ A Model Context Protocol (MCP) server that provides tools to query [Erick Wendel
 
 This MCP server is also available on [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp) for direct integration.
 
-
-
 ## Features
 
 - Built with Model Context Protocol (MCP)
@@ -20,6 +18,7 @@ This MCP server is also available on [Smithery](https://smithery.ai/server/@Eric
 - Structured error handling
 - Compatible with Claude Desktop, Cursor, and [MCPHost](https://github.com/mark3labs/mcphost) (free alternative)
 
+> Note: This project requires Node.js v23+ as it uses the native TypeScript support added in the last year.
 
 ## Architecture
 
@@ -78,6 +77,8 @@ This will show you all available tools, their parameters, and how to use them.
 
 ## Integration with AI Tools
 
+Make sure you're using Node.js on version 23 or superior (it requires the native TypeScript support on Node.js).
+
 ### Installing via Smithery
 
 To install Erick Wendel Contributions for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp):
@@ -88,7 +89,7 @@ npx -y @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client
 
 > **Note**: The Smithery CLI installation for Claude is currently experiencing issues. Please use the manual installation method below until this is resolved.
 
-### Installing from the source (this repo)
+### Cursor Setup
 
 1. Open Cursor Settings
 2. Navigate to MCP section
@@ -101,9 +102,17 @@ npx -y @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client
    ```
 5. Make sure Cursor chat is in Agent mode by selecting "Agent" in the lower left side dropdown
 
-### Claude Desktop Setup
+6. Go to the chat an ask "how many videos were published about JavaScript in 2024"
 
-Add the following configuration to your Claude Desktop config:
+![](./demos/cursor-videos-in-2024.png)
+
+
+### Claude Desktop Setup
+1. Go to Claude settings ( command ,)
+2. Click in the Developer tab
+3. Click in edit config
+4. Open the config in a code editor
+5. Add the following configuration to your Claude Desktop config:
 
 ```json
 {
@@ -115,6 +124,14 @@ Add the following configuration to your Claude Desktop config:
   }
 }
 ```
+6. Save file and Restart Claude Desktop
+7. Open the Developer tab again and check if it's in the "running" state as follows:
+
+![](./demos/claude-conf.png)
+
+8. Go to the chat an ask "Are there videos about RAG?"
+
+![](./demos/videos-about-rag.jpeg)
 
 ### Free Alternative Using MCPHost
 
@@ -159,9 +176,6 @@ Here are some examples of queries you can ask Claude, Cursor or any MCP Client:
 
 ![](./demos/posts-webxr.jpeg)
 
-4. "Are there videos about RAG?"
-
-![](./demos/videos-about-rag.jpeg)
 
 
 ## Development
