@@ -1,8 +1,14 @@
 {
-    "mcpServers": {
-      "erickwendel-contributions": {
-        "command": "/Users/erickwendel/.nvm/versions/node/v23.9.0/bin/node",
-        "args": ["/Users/erickwendel/Downloads/projetos/mcp-aai-example/src/index.ts"]
-      }
+  "mcpServers": {
+    "erickwendel-contributions": {
+      "command": "npm",
+      "args": [
+        "exec",
+        "--",
+        "@smithery/cli@latest",
+        "run",
+        "@ErickWendel/erickwendel-contributions-mcp"
+      ]
     }
   }
+}
