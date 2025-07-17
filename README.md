@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/erickwendel-erickwendel-contributions-mcp-badge.png)](https://mseep.ai/app/erickwendel-erickwendel-contributions-mcp)
+
 # erickwendel-contributions-mcp
 
 ![CI Status](https://github.com/ErickWendel/erickwendel-contributions-mcp/workflows/Test%20MCP%20Server/badge.svg)
