@@ -1,6 +1,7 @@
+runtime: "typescript"
 name: erickwendel-contributions-mcp
 description: A Model Context Protocol (MCP) server that provides tools to query Erick Wendel's contributions across different platforms.
-version: 1.0.0
+version: 1.0.1
 author: Erick Wendel
 repository: https://github.com/ErickWendel/erickwendel-contributions-mcp
 license: MIT
@@ -21,7 +22,7 @@ startCommand:
         "src/index.ts"
       ]
     })
-  
+
 tools:
   - name: get-talks
     description: Retrieves a paginated list of talks with optional filtering
@@ -76,4 +77,4 @@ tools:
         optional: true
 
   - name: check-status
-    description: Verifies if the API is alive and responding 
+    description: Verifies if the API is alive and responding
