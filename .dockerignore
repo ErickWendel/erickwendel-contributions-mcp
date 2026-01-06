@@ -1,0 +1,11 @@
+node_modules
+npm-debug.log
+.git
+.gitignore
+.nvmrc
+README.md
+demos
+.github
+test
+.smithery
+*.md
