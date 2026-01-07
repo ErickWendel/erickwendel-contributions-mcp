@@ -1,11 +1,12 @@
 FROM node:23-slim
 
-# Install Python and build essentials for native modules
+# Install Python, build essentials for native modules, and libsecret runtime library
 RUN apt-get update && apt-get install -y \
     python3 \
     make \
     g++ \
     libsecret-1-dev \
+    libsecret-1-0 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
