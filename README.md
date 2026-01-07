@@ -1,11 +1,10 @@
 # erickwendel-contributions-mcp
 
 ![CI Status](https://github.com/ErickWendel/erickwendel-contributions-mcp/workflows/Test%20MCP%20Server/badge.svg)
-[![smithery badge](https://smithery.ai/badge/@ErickWendel/erickwendel-contributions-mcp)](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp)
 
 A Model Context Protocol (MCP) server that provides tools to query [Erick Wendel's contributions](https://erickwendel.com.br/) across different platforms. Query talks, blog posts, and videos using natural language through Claude, Cursor or similars. This project was built using [Cursor](https://cursor.sh) IDE with the default agent (trial version).
 
-This MCP server is also available on [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp) for direct integration.
+> **Note:** This MCP server is also listed on [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp).
 
 ## Available Tools
 
@@ -36,20 +35,20 @@ This MCP server provides the following **capabilities**:
 
 ## Inspect MCP Server Capabilities
 
-You can inspect this MCP server's capabilities using Smithery:
+You can inspect this MCP server's capabilities using the MCP Inspector:
 
 ```bash
-npx -y @smithery/cli@latest inspect @ErickWendel/erickwendel-contributions-mcp
+npm run inspect
 ```
 
 This will show you all available tools, their parameters, and how to use them.
 
 ## Setup
 
-1. Make sure you're using Node.js v23+
+1. Make sure you're using Node.js v20+
 ```bash
 node -v
-#v23.9.0
+# v20.x.x or higher
 ```
 
 2. Clone this repository:
@@ -58,9 +57,14 @@ git clone https://github.com/erickwendel/erickwendel-contributions-mcp.git
 cd erickwendel-contributions-mcp
 ```
 
-3. Restore dependencies:
+3. Install dependencies:
 ```bash
 npm ci
+```
+
+4. Run the server:
+```bash
+npm start
 ```
 
 ## Integration with AI Tools
@@ -74,42 +78,19 @@ npm ci
    ```
    Name = erickwendel-contributions
    Type = command
-   Command = node ABSOLUTE_PATH_TO_PROJECT/src/index.ts
+   Command = node --experimental-strip-types ABSOLUTE_PATH_TO_PROJECT/src/index.ts
    ```
 
-   or if you prefer executing it from Smithery
-   ```
-   Name = erickwendel-contributions
-   Type = command
-   Command = npm exec -- @smithery/cli@latest run @ErickWendel/erickwendel-contributions-mcp
-   ```
 ![](./demos/cursor-mcp.png)
 
-or configure directly from the Cursor's global MCP file located in `~/.cursor/mcp.json` and add the following:
+or configure directly from the Cursor's global MCP file located in `~/.cursor/mcp.json`:
 
 ```json
 {
   "mcpServers": {
     "erickwendel-contributions": {
       "command": "node",
-      "args": ["ABSOLUTE_PATH_TO_PROJECT/src/index.ts"]
-    }
-  }
-}
-```
-or if you prefer executing it from Smithery
-```json
-{
-  "mcpServers": {
-    "erickwendel-contributions": {
-      "command": "npm",
-      "args": [
-        "exec",
-        "--",
-        "@smithery/cli@latest",
-        "run",
-        "@ErickWendel/erickwendel-contributions-mcp"
-      ]
+      "args": ["--experimental-strip-types", "ABSOLUTE_PATH_TO_PROJECT/src/index.ts"]
     }
   }
 }
@@ -123,15 +104,13 @@ or if you prefer executing it from Smithery
 
 ### Claude Desktop Setup
 
-#### Installing via Smithery
+#### Installing via Smithery (Recommended)
 
-To install Erick Wendel Contributions for Claude Desktop automatically via [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp):
+To install automatically via [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp):
 
 ```bash
-npx -y @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client claude
+npx @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client claude
 ```
-
-> **Note**: The Smithery CLI installation for Claude is currently experiencing issues. Please use the manual installation method below until this is resolved.
 
 #### Manual Setup
 
@@ -139,48 +118,33 @@ npx -y @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client
 2. Click in the Developer tab
 3. Click in edit config
 4. Open the config in a code editor
-5. Add the following configuration to your Claude Desktop config:
+5. Add the following configuration:
 
+Using npx (recommended):
 ```json
 {
   "mcpServers": {
     "erickwendel-contributions": {
-      "command": "node",
-      "args": ["ABSOLUTE_PATH_TO_PROJECT/src/index.ts"]
-    }
-  }
-}
-```
-or if you prefer executing it from Smithery
-```json
-{
-  "mcpServers": {
-    "erickwendel-contributions": {
-      "command": "npm",
+      "command": "npx",
       "args": [
-        "exec",
-        "--",
-        "@smithery/cli@latest",
-        "run",
-        "@ErickWendel/erickwendel-contributions-mcp"
-      ]
-    }
-  }
-}
+        "@smithery/cli",
+
+To install automatically via [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp):
+
+```bash
+npx @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client claude
 ```
 
-6. Save file and Restart Claude Desktop
-7. Open the Developer tab again and check if it's in the "running" state as follows:
+#### Manual Setup
 
-![](./demos/claude-conf.png)
+1. Go to Claude settings
+2. Click in the Developer tab
+3. Click in edit config
+4. Open the config in a code editor
+5. Add the following configuration:
+to Claude Desktop nor Cursor, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative. MCPHost is a CLI tool that enables Large Language Models to interact with MCP servers.
 
-8. Go to the chat and ask "Are there videos about RAG?"
-
-![](./demos/videos-about-rag.jpeg)
-
-### Free Alternative Using MCPHost
-
-If you don't have access to Claude Desktop nor Cursor, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative. MCPHost is a CLI tool that enables Large Language Models to interact with MCP servers.
+1. Install MCPHost:or Cursor, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative.
 
 1. Install MCPHost:
 ```bash
@@ -192,22 +156,9 @@ go install github.com/mark3labs/mcphost@latest
 {
   "mcpServers": {
     "erickwendel-contributions": {
-      "command": "node",
-      "args": ["ABSOLUTE_PATH_TO_PROJECT/src/index.ts"]
-    }
-  }
-}
-```
-or if you prefer executing it from Smithery
-```json
-{
-  "mcpServers": {
-    "erickwendel-contributions": {
-      "command": "npm",
+      "command": "npx",
       "args": [
-        "exec",
-        "--",
-        "@smithery/cli@latest",
+        "@smithery/cli",
         "run",
         "@ErickWendel/erickwendel-contributions-mcp"
       ]
@@ -215,8 +166,19 @@ or if you prefer executing it from Smithery
   }
 }
 ```
-3. Run MCPHost with your preferred Ollama model:
-```bash
+
+Or for local development:
+```json
+{
+  "mcpServers": {
+    "erickwendel-contributions": {
+      "command": "node",
+      "args": ["--experimental-strip-types", "ABSOLUTE_PATH_TO_PROJECT/src/index.ts"]
+    }
+  }
+}
+```
+bash
 ollama pull MODEL_NAME
 mcphost --config ./mcp.jsonc -m ollama:MODEL_NAME
 ```
@@ -250,7 +212,6 @@ Here are some examples of queries you can ask Claude, Cursor or any MCP Client:
 - Standard I/O transport for easy integration
 - Structured error handling
 - Compatible with Claude Desktop, Cursor, and [MCPHost](https://github.com/mark3labs/mcphost) (free alternative)
-- **Deployable via Smithery** with HTTP transport
 
 > Note: This project requires Node.js v23+ as it uses the native TypeScript support added in the last year.
 

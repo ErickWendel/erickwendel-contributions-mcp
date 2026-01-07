@@ -1,17 +1,17 @@
-import { client } from '../config/api.ts';
-import type { 
-  TalksResponse, 
-  PostsResponse, 
-  VideosResponse, 
+import { client } from '../config/api.ts'
+import type {
+  TalksResponse,
+  PostsResponse,
+  VideosResponse,
   StatusResponse,
   Talk
-} from '../types/index.ts';
-import { getLanguageCode } from '../utils/language.ts';
+} from '../types/index.ts'
+import { getLanguageCode } from '../utils/language.ts'
 
 /**
  * Fetches talks with optional filtering and pagination
  */
-export async function fetchTalks(params: {
+export async function fetchTalks (params: {
   id?: string;
   title?: string;
   language?: string;
@@ -21,8 +21,8 @@ export async function fetchTalks(params: {
   limit?: number;
   count_only?: boolean;
 }): Promise<TalksResponse> {
-  const { id, title, language, city, country, skip, limit, count_only } = params;
-  const languageCode = getLanguageCode(language);
+  const { id, title, language, city, country, skip, limit, count_only } = params
+  const languageCode = getLanguageCode(language)
 
   return await client.query({
     getTalks: {
@@ -33,7 +33,7 @@ export async function fetchTalks(params: {
         city,
         country,
         skip,
-        limit: count_only ? 0 : limit,
+        limit: count_only ? 0 : limit
       },
       totalCount: true,
       retrieved: true,
@@ -42,7 +42,7 @@ export async function fetchTalks(params: {
         language: true,
         location: {
           country: true,
-          city: true,
+          city: true
         }
       } : {
         _id: true,
@@ -51,26 +51,26 @@ export async function fetchTalks(params: {
         type: true,
         event: {
           link: true,
-          name: true,
+          name: true
         },
         slides: true,
         video: true,
         tags: true,
         location: {
           country: true,
-          city: true,
+          city: true
         },
         language: true,
-        date: true,
-      },
-    },
-  }) as TalksResponse;
+        date: true
+      }
+    }
+  }) as TalksResponse
 }
 
 /**
  * Fetches all talks for a specific year using pagination
  */
-export async function fetchTalksByYear(params: {
+export async function fetchTalksByYear (params: {
   id?: string;
   title?: string;
   language?: string;
@@ -78,13 +78,13 @@ export async function fetchTalksByYear(params: {
   country?: string;
   year: number;
 }): Promise<Talk[]> {
-  const { id, title, language, city, country, year } = params;
-  const languageCode = getLanguageCode(language);
-  
-  const allTalks: Talk[] = [];
-  let currentSkip = 0;
-  const BATCH_SIZE = 50;
-  let shouldContinue = true;
+  const { id, title, language, city, country, year } = params
+  const languageCode = getLanguageCode(language)
+
+  const allTalks: Talk[] = []
+  let currentSkip = 0
+  const BATCH_SIZE = 50
+  let shouldContinue = true
 
   while (shouldContinue) {
     const result = await client.query({
@@ -96,7 +96,7 @@ export async function fetchTalksByYear(params: {
           city,
           country,
           skip: currentSkip,
-          limit: BATCH_SIZE,
+          limit: BATCH_SIZE
         },
         totalCount: true,
         retrieved: true,
@@ -108,56 +108,56 @@ export async function fetchTalksByYear(params: {
           type: true,
           event: {
             link: true,
-            name: true,
+            name: true
           },
           slides: true,
           video: true,
           tags: true,
           location: {
             country: true,
-            city: true,
+            city: true
           },
           language: true,
-          date: true,
-        },
-      },
-    }) as TalksResponse;
+          date: true
+        }
+      }
+    }) as TalksResponse
 
     if (!result.getTalks?.talks?.length) {
-      shouldContinue = false;
-      break;
+      shouldContinue = false
+      break
     }
 
-    const talks = result.getTalks.talks;
+    const talks = result.getTalks.talks
     const foundDifferentYear = talks?.some(talk => {
-      if (!talk?.date) return false;
-      const talkYear = new Date(talk.date).getFullYear();
-      return talkYear < year;
-    });
+      if (!talk?.date) return false
+      const talkYear = new Date(talk.date).getFullYear()
+      return talkYear < year
+    })
 
     // Filter talks for the specific year
     const yearFilteredTalks = talks?.filter(talk => {
-      if (!talk?.date) return false;
-      const talkYear = new Date(talk.date).getFullYear();
-      return talkYear === year;
-    }) || [];
+      if (!talk?.date) return false
+      const talkYear = new Date(talk.date).getFullYear()
+      return talkYear === year
+    }) || []
 
-    allTalks.push(...yearFilteredTalks);
+    allTalks.push(...yearFilteredTalks)
 
     if (foundDifferentYear) {
-      shouldContinue = false;
+      shouldContinue = false
     } else {
-      currentSkip += BATCH_SIZE;
+      currentSkip += BATCH_SIZE
     }
   }
 
-  return allTalks;
+  return allTalks
 }
 
 /**
  * Fetches posts with optional filtering and pagination
  */
-export async function fetchPosts(params: {
+export async function fetchPosts (params: {
   id?: string;
   title?: string;
   language?: string;
@@ -165,8 +165,8 @@ export async function fetchPosts(params: {
   skip?: number;
   limit?: number;
 }): Promise<PostsResponse> {
-  const { id, title, language, portal, skip, limit } = params;
-  const languageCode = getLanguageCode(language);
+  const { id, title, language, portal, skip, limit } = params
+  const languageCode = getLanguageCode(language)
 
   return await client.query({
     getPosts: {
@@ -176,7 +176,7 @@ export async function fetchPosts(params: {
         language: languageCode,
         portal,
         skip,
-        limit,
+        limit
       },
       totalCount: true,
       retrieved: true,
@@ -190,28 +190,28 @@ export async function fetchPosts(params: {
         additionalLinks: true,
         portal: {
           link: true,
-          name: true,
+          name: true
         },
         tags: true,
         language: true,
-        date: true,
-      },
-    },
-  }) as PostsResponse;
+        date: true
+      }
+    }
+  }) as PostsResponse
 }
 
 /**
  * Fetches videos with optional filtering and pagination
  */
-export async function fetchVideos(params: {
+export async function fetchVideos (params: {
   id?: string;
   title?: string;
   language?: string;
   skip?: number;
   limit?: number;
 }): Promise<VideosResponse> {
-  const { id, title, language, skip, limit } = params;
-  const languageCode = getLanguageCode(language);
+  const { id, title, language, skip, limit } = params
+  const languageCode = getLanguageCode(language)
 
   return await client.query({
     getVideos: {
@@ -220,7 +220,7 @@ export async function fetchVideos(params: {
         title,
         language: languageCode,
         skip,
-        limit,
+        limit
       },
       totalCount: true,
       retrieved: true,
@@ -234,17 +234,17 @@ export async function fetchVideos(params: {
         additionalLinks: true,
         tags: true,
         language: true,
-        date: true,
-      },
-    },
-  }) as VideosResponse;
+        date: true
+      }
+    }
+  }) as VideosResponse
 }
 
 /**
  * Checks if the API is alive and responding
  */
-export async function checkApiStatus(): Promise<StatusResponse> {
+export async function checkApiStatus (): Promise<StatusResponse> {
   return await client.query({
-    isAlive: true,
-  }) as StatusResponse;
-} 
+    isAlive: true
+  }) as StatusResponse
+}

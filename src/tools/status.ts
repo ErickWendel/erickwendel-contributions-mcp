@@ -1,6 +1,6 @@
-import type { McpResponse, McpTextContent } from '../types/index.ts';
-import { checkApiStatus } from '../services/api.ts';
-import { TOOL_CONFIG } from '../config/api.ts';
+import type { McpResponse, McpTextContent } from '../types/index.ts'
+import { checkApiStatus } from '../services/api.ts'
+import { TOOL_CONFIG } from '../config/api.ts'
 
 /**
  * MCP tool definition for checking API status
@@ -11,18 +11,18 @@ export const checkStatusTool = {
   parameters: {},
   handler: async (): Promise<McpResponse> => {
     try {
-      const result = await checkApiStatus();
+      const result = await checkApiStatus()
 
       const content: McpTextContent = {
-        type: "text",
-        text: `API Status: ${result.isAlive ? "Online" : "Offline"}`
-      };
+        type: 'text',
+        text: `API Status: ${result.isAlive ? 'Online' : 'Offline'}`
+      }
 
       return {
-        content: [content],
-      };
+        content: [content]
+      }
     } catch (error) {
-      throw new Error(`Failed to check API status: ${error.message}`);
+      throw new Error(`Failed to check API status: ${error.message}`)
     }
   }
-}; 
+}

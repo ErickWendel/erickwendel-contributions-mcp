@@ -5,4 +5,4 @@ export interface McpToolResponse {
     [key: string]: unknown;
   }>;
   [key: string]: unknown;
-} 
+}

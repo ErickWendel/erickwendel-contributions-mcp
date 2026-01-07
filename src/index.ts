@@ -1,22 +1,22 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
-import { SERVER_CONFIG } from './config/api.ts';
-import { getTalksTool } from './tools/talks.ts';
-import { getPostsTool } from './tools/posts.ts';
-import { getVideosTool } from './tools/videos.ts';
-import { checkStatusTool } from './tools/status.ts';
-import { z } from 'zod';
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
+import { SERVER_CONFIG } from './config/api.ts'
+import { getTalksTool } from './tools/talks.ts'
+import { getPostsTool } from './tools/posts.ts'
+import { getVideosTool } from './tools/videos.ts'
+import { checkStatusTool } from './tools/status.ts'
+import { z } from 'zod'
 
 /**
  * Initialize the MCP server and register all tools, prompts, and resources
  */
-function initializeServer() {
+async function initializeServer () {
   // Create server instance
   const server = new McpServer({
     name: SERVER_CONFIG.name,
     version: SERVER_CONFIG.version,
-    description: SERVER_CONFIG.description,
-  });
+    description: SERVER_CONFIG.description
+  })
 
   // Register all tools
   server.tool(
@@ -24,28 +24,28 @@ function initializeServer() {
     getTalksTool.description,
     getTalksTool.parameters,
     getTalksTool.handler
-  );
+  )
 
   server.tool(
     getPostsTool.name,
     getPostsTool.description,
     getPostsTool.parameters,
     getPostsTool.handler
-  );
+  )
 
   server.tool(
     getVideosTool.name,
     getVideosTool.description,
     getVideosTool.parameters,
     getVideosTool.handler
-  );
+  )
 
   server.tool(
     checkStatusTool.name,
     checkStatusTool.description,
     checkStatusTool.parameters,
     checkStatusTool.handler
-  );
+  )
 
   // Register prompts for common queries
   server.registerPrompt(
@@ -68,7 +68,7 @@ function initializeServer() {
         }
       }]
     })
-  );
+  )
 
   server.registerPrompt(
     'summarize-activity',
@@ -88,7 +88,7 @@ function initializeServer() {
         }
       }]
     })
-  );
+  )
 
   // Register resources for server information
   server.registerResource(
@@ -119,7 +119,7 @@ function initializeServer() {
         }, null, 2)
       }]
     })
-  );
+  )
 
   server.registerResource(
     'statistics',
@@ -149,31 +149,22 @@ function initializeServer() {
         }, null, 2)
       }]
     })
-  );
+  )
 
-  return server;
-}
-
-// Default export for Smithery (HTTP transport)
-export default function ({ config }: { config?: Record<string, unknown> }) {
-  const server = initializeServer();
-  return server.server;
+  return server
 }
 
 /**
- * Main entry point for stdio transport (local development)
- * Run with: npm start or node src/index.ts
+ * Main entry point - starts the MCP server on stdio
  */
-export async function main() {
-  // Initialize the server
-  const server = initializeServer();
-
-  // Connect to stdio transport
-  const transport = new StdioServerTransport();
-  await server.connect(transport);
-  // console.error for claude-desktop so it won't process this output
-  console.error("Erick Wendel API MCP Server running on stdio");
+async function main () {
+  const server = await initializeServer()
+  const transport = new StdioServerTransport()
+  await server.connect(transport)
+  console.error('Erick Wendel API MCP Server running on stdio')
 }
 
-// Re-export for backwards compatibility
-export { initializeServer };
+main().catch((error) => {
+  console.error('Fatal error in main():', error)
+  process.exit(1)
+})

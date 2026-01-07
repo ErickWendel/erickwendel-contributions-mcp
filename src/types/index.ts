@@ -79,7 +79,6 @@ export interface VideosResponse {
   } | null;
 }
 
-
 export interface StatusResponse {
   isAlive: boolean;
 }
@@ -115,23 +114,22 @@ export interface VideosParams {
   limit?: number;
 }
 
-
 // MCP response types
 export interface McpTextContent {
-  type: "text";
+  type: 'text';
   text: string;
   [key: string]: unknown;
 }
 
 export interface McpImageContent {
-  type: "image";
+  type: 'image';
   data: string;
   mimeType: string;
   [key: string]: unknown;
 }
 
 export interface McpResourceContent {
-  type: "resource";
+  type: 'resource';
   resource: {
     text: string;
     uri: string;
@@ -153,4 +151,4 @@ export interface McpResponse {
   _meta?: Record<string, unknown>;
   isError?: boolean;
   [key: string]: unknown;
-} 
+}

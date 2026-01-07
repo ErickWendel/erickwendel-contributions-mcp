@@ -1,9 +1,0 @@
-runtime: "typescript"
-target: "local"
-
-startCommand:
-  type: "http"
-  configSchema:
-    type: "object"
-    properties: {}
-  exampleConfig: {}
