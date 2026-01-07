@@ -249,8 +249,8 @@ Here are some examples of queries you can ask Claude, Cursor or any MCP Client:
 - Modular architecture with separation of concerns
 - Standard I/O transport for easy integration
 - Structured error handling
-- Optimized Docker image with multi-stage build
 - Compatible with Claude Desktop, Cursor, and [MCPHost](https://github.com/mark3labs/mcphost) (free alternative)
+- **Deployable via Smithery** with HTTP transport
 
 > Note: This project requires Node.js v23+ as it uses the native TypeScript support added in the last year.
 
@@ -281,31 +281,6 @@ For development mode with watch:
 ```bash
 npm run test:dev
 ```
-
-## Docker Deployment
-
-Build the optimized Docker image:
-
-```bash
-docker build -t erickwendel-contributions-mcp .
-```
-
-Run the container:
-
-```bash
-docker run -i erickwendel-contributions-mcp
-```
-
-The Dockerfile uses:
-- **Multi-stage build** to reduce final image size
-- **Alpine Linux** (node:23-alpine) for minimal footprint
-- **Non-root user** for security
-- **Production-only dependencies** to minimize attack surface
-- **Health checks** for container orchestration
-
-Image size comparison:
-- Previous (node:23-slim with dev deps): ~800MB
-- Optimized (node:23-alpine, multi-stage): ~200MB
 
 ## Contributing
 

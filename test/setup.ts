@@ -4,7 +4,7 @@ import { StdioClientTransport } from "@modelcontextprotocol/sdk/client/stdio.js"
 export async function createMcpClient() {
   const transport = new StdioClientTransport({
     command: "node",
-    args: ["src/index.ts"]
+    args: ["--experimental-strip-types", "src/stdio.ts"]
   });
 
   const client = new Client(

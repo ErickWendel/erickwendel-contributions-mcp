@@ -10,7 +10,7 @@ import { z } from 'zod';
 /**
  * Initialize the MCP server and register all tools, prompts, and resources
  */
-async function initializeServer() {
+function initializeServer() {
   // Create server instance
   const server = new McpServer({
     name: SERVER_CONFIG.name,
@@ -154,12 +154,19 @@ async function initializeServer() {
   return server;
 }
 
+// Default export for Smithery (HTTP transport)
+export default function ({ config }: { config?: Record<string, unknown> }) {
+  const server = initializeServer();
+  return server.server;
+}
+
 /**
- * Main entry point
+ * Main entry point for stdio transport (local development)
+ * Run with: npm start or node src/index.ts
  */
-async function main() {
+export async function main() {
   // Initialize the server
-  const server = await initializeServer();
+  const server = initializeServer();
 
   // Connect to stdio transport
   const transport = new StdioServerTransport();
@@ -168,8 +175,5 @@ async function main() {
   console.error("Erick Wendel API MCP Server running on stdio");
 }
 
-// Start the server
-main().catch((error) => {
-  console.error("Fatal error in main():", error);
-  process.exit(1);
-});
+// Re-export for backwards compatibility
+export { initializeServer };
