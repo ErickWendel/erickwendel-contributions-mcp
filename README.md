@@ -9,8 +9,9 @@ This MCP server is also available on [Smithery](https://smithery.ai/server/@Eric
 
 ## Available Tools
 
-This MCP server provides the following tools to interact with the API:
+This MCP server provides the following **capabilities**:
 
+### Tools
 - `get-talks`: Retrieves a paginated list of talks with optional filtering
   - Supports filtering by ID, title, language, city, country, and year
   - Can return counts grouped by language, country, or city
@@ -22,6 +23,14 @@ This MCP server provides the following tools to interact with the API:
   - Supports filtering by ID, title, and language
 
 - `check-status`: Verifies if the API is alive and responding
+
+### Prompts
+- `find-content`: Generate queries to find specific content by type, topic, and language
+- `summarize-activity`: Create summaries of content activity by year
+
+### Resources
+- `erickwendel://about`: Server information and capabilities metadata
+- `erickwendel://statistics`: Content statistics and available queries
 
 # Integration with AI Tools
 
@@ -233,12 +242,14 @@ Here are some examples of queries you can ask Claude, Cursor or any MCP Client:
 ## Features
 
 - Built with Model Context Protocol (MCP)
+- **Full MCP Capabilities**: Tools, Prompts, and Resources
 - Type-safe with TypeScript and Zod schema validation
 - Native TypeScript support in Node.js without transpilation
 - Generated SDK using [GenQL](https://genql.dev)
 - Modular architecture with separation of concerns
 - Standard I/O transport for easy integration
 - Structured error handling
+- Optimized Docker image with multi-stage build
 - Compatible with Claude Desktop, Cursor, and [MCPHost](https://github.com/mark3labs/mcphost) (free alternative)
 
 > Note: This project requires Node.js v23+ as it uses the native TypeScript support added in the last year.
@@ -271,6 +282,31 @@ For development mode with watch:
 npm run test:dev
 ```
 
+## Docker Deployment
+
+Build the optimized Docker image:
+
+```bash
+docker build -t erickwendel-contributions-mcp .
+```
+
+Run the container:
+
+```bash
+docker run -i erickwendel-contributions-mcp
+```
+
+The Dockerfile uses:
+- **Multi-stage build** to reduce final image size
+- **Alpine Linux** (node:23-alpine) for minimal footprint
+- **Non-root user** for security
+- **Production-only dependencies** to minimize attack surface
+- **Health checks** for container orchestration
+
+Image size comparison:
+- Previous (node:23-slim with dev deps): ~800MB
+- Optimized (node:23-alpine, multi-stage): ~200MB
+
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
@@ -281,4 +317,4 @@ Contributions are welcome! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details. 
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.

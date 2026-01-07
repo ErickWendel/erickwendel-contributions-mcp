@@ -1,10 +1,45 @@
-node_modules
-npm-debug.log
-.git
+# Dependencies
+node_modules/
+npm-debug.log*
+
+# Development & Testing
+.git/
+.github/
 .gitignore
-.nvmrc
-README.md
-demos
-.github
-test
+.vscode/
+.idea/
+test/
+coverage/
+*.test.ts
+*.test.js
+
+# Documentation (keep README.md for reference)
+demos/
+docs/
 *.md
+!README.md
+
+# Environment
+.env
+.env.*
+!.env.example
+.nvmrc
+
+# Build artifacts
+dist/
+build/
+.cache/
+
+# Logs
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Config files not needed in production
+.prettierrc
+.eslintrc*
+tsconfig.json
+.editorconfig
