@@ -23,4 +23,4 @@ export async function createMcpClient() {
 
   await client.connect(transport);
   return client;
-} 
+}
