@@ -1,7 +1,7 @@
 {
   "name": "@erickwendel/contributions-mcp",
-  "version": "1.0.0",
-  "description": "A service that provides access to TML GraphQL API data",
+  "version": "1.1.0",
+  "description": "An MCP Server to query Erick Wendel's community contributions such as talks, posts and videos.",
   "main": "src/index.ts",
   "module": "src/index.ts",
   "type": "module",

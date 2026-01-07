@@ -6,6 +6,25 @@ A Model Context Protocol (MCP) server that provides tools to query [Erick Wendel
 
 > **Note:** This MCP server is also listed on [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp).
 
+## Quick Start
+
+Use this MCP server directly with Claude Desktop or Cursor without installation:
+
+```json
+{
+  "mcpServers": {
+    "erickwendel-contributions": {
+      "command": "npx",
+      "args": ["-y", "@erickwendel/contributions-mcp"]
+    }
+  }
+}
+```
+
+Add this configuration to:
+- **Claude Desktop**: `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
+- **Cursor**: `~/.cursor/mcp.json`
+
 ## Available Tools
 
 This MCP server provides the following **capabilities**:
