@@ -10,7 +10,7 @@
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
 
-    // Emit Settings (No compilation - Node.js experimental stripping)
+    // Emit Settings (esbuild handles compilation)
     "noEmit": true,
 
     // Interop and Compatibility
@@ -33,7 +33,10 @@
     // Type Definitions
     "types": ["node"]
   },
+  "include": ["src/**/*"],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "dist",
+    "test"
   ]
 }

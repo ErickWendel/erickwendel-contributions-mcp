@@ -1,0 +1,23 @@
+# Source files
+src/
+test/
+
+# Development files
+tsconfig.json
+eslint.config.js
+.nvmrc
+.github/
+demos/
+scripts/
+refs.txt
+
+# Build artifacts
+*.log
+.DS_Store
+
+# Dependencies
+node_modules/
+
+# IDE
+.vscode/
+.idea/
