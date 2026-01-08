@@ -4,8 +4,6 @@
 
 A Model Context Protocol (MCP) server that provides tools to query [Erick Wendel's contributions](https://erickwendel.com.br/) across different platforms. Query talks, blog posts, and videos using natural language through Claude, Cursor or similars. This project was built using [Cursor](https://cursor.sh) IDE with the default agent (trial version).
 
-> **Note:** This MCP server is also listed on [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp).
-
 ## Quick Start
 
 Use this MCP server directly with Claude Desktop or Cursor without installation:
@@ -90,19 +88,28 @@ npm start
 
 ### Cursor Setup
 
-1. Open Cursor Settings
-2. Navigate to MCP section
-3. Click "Add new MCP server"
-4. Configure the server:
-   ```
-   Name = erickwendel-contributions
-   Type = command
-   Command = node --experimental-strip-types ABSOLUTE_PATH_TO_PROJECT/src/index.ts
-   ```
+Add the following configuration to `~/.cursor/mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "erickwendel-contributions": {
+      "command": "npx",
+      "args": ["-y", "@erickwendel/contributions-mcp"]
+    }
+  }
+}
+```
 
 ![](./demos/cursor-mcp.png)
 
-or configure directly from the Cursor's global MCP file located in `~/.cursor/mcp.json`:
+Make sure Cursor chat is in Agent mode by selecting "Agent" in the lower left side dropdown, then ask "how many videos were published about JavaScript in 2024":
+
+![](./demos/cursor-videos-in-2024.png)
+
+#### Local Development
+
+For local development, use the absolute path to the project:
 
 ```json
 {
@@ -115,55 +122,42 @@ or configure directly from the Cursor's global MCP file located in `~/.cursor/mc
 }
 ```
 
-5. Make sure Cursor chat is in Agent mode by selecting "Agent" in the lower left side dropdown
-
-6. Go to the chat an ask "how many videos were published about JavaScript in 2024"
-
-![](./demos/cursor-videos-in-2024.png)
-
 ### Claude Desktop Setup
-
-#### Installing via Smithery (Recommended)
-
-To install automatically via [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp):
-
-```bash
-npx @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client claude
-```
-
-#### Manual Setup
 
 1. Go to Claude settings
 2. Click in the Developer tab
 3. Click in edit config
 4. Open the config in a code editor
-5. Add the following configuration:
+5. Add the following configuration to `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS):
 
-Using npx (recommended):
 ```json
 {
   "mcpServers": {
     "erickwendel-contributions": {
       "command": "npx",
-      "args": [
-        "@smithery/cli",
-
-To install automatically via [Smithery](https://smithery.ai/server/@ErickWendel/erickwendel-contributions-mcp):
-
-```bash
-npx @smithery/cli install @ErickWendel/erickwendel-contributions-mcp --client claude
+      "args": ["-y", "@erickwendel/contributions-mcp"]
+    }
+  }
+}
 ```
 
-#### Manual Setup
+#### Local Development
 
-1. Go to Claude settings
-2. Click in the Developer tab
-3. Click in edit config
-4. Open the config in a code editor
-5. Add the following configuration:
-to Claude Desktop nor Cursor, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative. MCPHost is a CLI tool that enables Large Language Models to interact with MCP servers.
+For local development, use the absolute path to the project:
 
-1. Install MCPHost:or Cursor, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative.
+```json
+{
+  "mcpServers": {
+    "erickwendel-contributions": {
+      "command": "node",
+      "args": ["--experimental-strip-types", "ABSOLUTE_PATH_TO_PROJECT/src/index.ts"]
+    }
+  }
+}
+```
+### MCPHost with Ollama (Free Alternative)
+
+If you don't have access to Claude Desktop or Cursor, you can use [MCPHost](https://github.com/mark3labs/mcphost) with Ollama as a free alternative.
 
 1. Install MCPHost:
 ```bash
@@ -176,17 +170,21 @@ go install github.com/mark3labs/mcphost@latest
   "mcpServers": {
     "erickwendel-contributions": {
       "command": "npx",
-      "args": [
-        "@smithery/cli",
-        "run",
-        "@ErickWendel/erickwendel-contributions-mcp"
-      ]
+      "args": ["-y", "@erickwendel/contributions-mcp"]
     }
   }
 }
 ```
 
-Or for local development:
+3. Run with Ollama:
+```bash
+ollama pull MODEL_NAME
+mcphost --config ./mcp.jsonc -m ollama:MODEL_NAME
+```
+
+#### Local Development
+
+For local development, update the config:
 ```json
 {
   "mcpServers": {
@@ -196,10 +194,6 @@ Or for local development:
     }
   }
 }
-```
-bash
-ollama pull MODEL_NAME
-mcphost --config ./mcp.jsonc -m ollama:MODEL_NAME
 ```
 
 ## Example Queries
