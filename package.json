@@ -1,6 +1,6 @@
 {
   "name": "@erickwendel/contributions-mcp",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "An MCP Server to query Erick Wendel's community contributions such as talks, posts and videos.",
   "main": "src/index.ts",
   "module": "src/index.ts",
