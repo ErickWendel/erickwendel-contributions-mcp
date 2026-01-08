@@ -1,3 +1,5 @@
+#!/usr/bin/env node --experimental-strip-types --no-warnings
+
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { StdioServerTransport } from '@modelcontextprotocol/sdk/server/stdio.js'
 import { SERVER_CONFIG } from './config/api.ts'

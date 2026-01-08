@@ -8,6 +8,9 @@
   "engines": {
     "node": ">=20.0.0"
   },
+  "bin": {
+    "contributions-mcp": "./src/index.ts"
+  },
   "scripts": {
     "start": "node --experimental-strip-types --no-warnings src/index.ts",
     "dev": "node --experimental-strip-types --inspect --watch src/index.ts",
